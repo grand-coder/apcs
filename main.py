@@ -18,7 +18,14 @@ def category(c):
 
 @app.route("/")
 def home():
-  return "hello"
+  temp = glob.glob("articles/*")
+  fill = []
+  for t in temp:
+      length = len(glob.glob(t + "/*.txt"))
+      category = t.replace("articles/", "")
+      f = (category, length)
+      fill.append(f)
+  return render_template("index.html", cat=fill)
 
 if __name__ == '__main__':
   app.run(debug=True)
