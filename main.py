@@ -3,7 +3,7 @@ import glob
 from datetime import datetime
 import os
 
-app = Flask("Elwing")
+app = Flask(__name__, template_folder='templates') 
 
 @app.route("/category/<c>")
 def category(c):
